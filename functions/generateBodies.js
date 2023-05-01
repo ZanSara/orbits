@@ -1,4 +1,7 @@
 import * as THREE from 'three';
+import SunTexture from '../images/2k_sun.jpg'
+import EarthTexture from '../images/2k_earth.jpg'
+import JupiterTexture from '../images/2k_jupiter.jpg'
 
 // Backgro
 /* ************************
@@ -35,7 +38,7 @@ export function generateStar(scene){
     Sun.add(light);
     
     const sunMaterial = new THREE.MeshBasicMaterial( { 
-        map: textureLoader.load( './images/2k_sun.jpg'),
+        map: textureLoader.load( SunTexture ),
         emissive: 0xffff00,
         emissiveIntensity: 1,
         receiveShadow: false,
@@ -51,7 +54,7 @@ export function generateStar(scene){
 
 export function generateEarth(scene){
     const earthMaterial = new THREE.MeshStandardMaterial( { 
-        map: textureLoader.load( './images/2k_earth.jpg'),
+        map: textureLoader.load( EarthTexture ),
         receiveShadow: true,
     });
     const earthGeometry = new THREE.SphereGeometry( 1 );
@@ -64,7 +67,7 @@ export function generateEarth(scene){
 
 export function generateJupiter(scene){
     const jupMaterial = new THREE.MeshStandardMaterial( { 
-        map: textureLoader.load( './images/2k_jupiter.jpg'),
+        map: textureLoader.load( JupiterTexture ),
         receiveShadow: true,
     });
     const jupGeometry = new THREE.SphereGeometry( 1 );
