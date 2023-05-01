@@ -1,13 +1,15 @@
 import * as THREE from 'three';
+import StarsTexture from '../images/2k_milky_way.jpg'
+
+const textureLoader = new THREE.TextureLoader();
 
 
-export function backgroundStars(){
-    // Background stars
-    // https://math.stackexchange.com/questions/1585975/how-to-generate-random-points-on-a-sphere#answer-1586185
+export function backgroundStars(scene, radius){
+    // // Background stars
+    // // https://math.stackexchange.com/questions/1585975/how-to-generate-random-points-on-a-sphere#answer-1586185
     var bgStarsGeometry = new THREE.BufferGeometry();
     var bgStarsPositions = new Float32Array(1000 * 3);
 
-    const radius = 100000;
     for (var i = 0; i < 1000; i++) {
         var bgStarsLatitude = Math.acos(2 * Math.random() - 1 ) - (Math.PI / 2);
         var bgStarsLongitude = Math.random() * Math.PI * 2;
@@ -28,6 +30,16 @@ export function backgroundStars(){
         sizeAttenuation: false
     });
 
-    var bgStars = new THREE.Points(bgStarsGeometry, bgStarsMaterial);
+    const bgStars = new THREE.Points(bgStarsGeometry, bgStarsMaterial);
+    scene.add(bgStars);
+    
     return bgStars;
+
+    // const material = new THREE.MeshBasicMaterial( { 
+    //     map: textureLoader.load( StarsTexture ),
+    //     side: THREE.BackSide
+    // });
+    // const geometry = new THREE.SphereGeometry( 1000000 );
+    // const mesh = new THREE.Mesh( geometry, material );
+    // scene.add(mesh);
 }
